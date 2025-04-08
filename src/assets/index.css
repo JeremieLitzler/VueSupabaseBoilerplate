@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@layer utilities {
+@layer theme {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -66,65 +66,73 @@
   }
 }
 
-@layer utilities {
-  * {
-    border-color: hsl(var(--border));
-  }
+@theme {
+  /* Container settings */
+  --container-padding: 2rem;
+  --breakpoint-2xl: 1400px;
 
-  body {
-    .bg-background {
-      background: hsl(var(--background));
-      color: hsl(var(--foreground));
-    }
-  }
+  /* Color definitions */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-  .text-muted-foreground {
-    color: hsl(var(--muted-foreground));
-  }
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 
-  .bg-primary {
-    background-color: hsl(var(--primary));
-  }
-  .text-primary-foreground {
-    color: hsl(var(--primary-foreground));
-  }
-  .bg-destructive {
-    background-color: hsl(var(--destructive));
-  }
-  .text-destructive-foreground {
-    color: hsl(var(--destructive-foreground));
-  }
-  .pencil {
-    @apply text-slate-500 cursor-pointer;
-  }
-  .live-input {
-    @apply w-full resize-none p-1 bg-transparent focus:outline-double focus:border-separate focus:bg-slate-100 focus:text-black focus:rounded-sm;
-  }
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-  .live-textarea {
-    @apply w-full text-slate-600 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded px-3.5 py-2.5 outline-none focus:bg-white;
-  }
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Border radius */
+  --radius: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
-.scale-enter-active,
-.scale-leave-active {
-  transition: transform 0.1s;
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
 }
 
-.scale-enter-from,
-.scale-leave-to {
-  transform: scale(0.3);
+@utility animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
+@utility animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+@utility animate-collapsible-down {
+  animation: collapsible-down 0.2s ease-out;
 }
+
+@utility animate-collapsible-up {
+  animation: collapsible-up 0.2s ease-out;
+}
+
+@utility side-bar-link {
+  @apply flex items-center gap-3 px-4 py-2 transition-colors rounded-md hover:text-primary text-muted-foreground;
+}
+
 @layer components {
   .theme-bg-color {
     @apply bg-blue-600;
@@ -152,4 +160,77 @@
   .error {
     @apply mx-auto flex justify-center items-center flex-1 p-10 text-center -mt-20 min-h-[90vh];
   }
+}
+
+/* Keyframes animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: transform 0.1s;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0.3);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+th {
+  @apply w-[100px];
+}
+
+h2 {
+  @apply mb-4 text-lg font-semibold w-fit;
+}
+
+.table-container {
+  @apply overflow-hidden overflow-y-auto rounded-md h-80;
 }

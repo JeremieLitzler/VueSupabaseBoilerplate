@@ -55,53 +55,55 @@ const openModal = ref(false)
       </span>
       Delete</Button
     >
-    <Table v-if="entity" class="mt-4 border table-container">
-      <TableRow>
-        <TableHead> Name </TableHead>
-        <TableCell>
-          <AppInputLiveEditText type="text" v-model="entity.name" @@commit="updateEntity" />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableHead> Description </TableHead>
-        <TableCell>
-          <AppInputLiveEditText
-            type="textarea"
-            v-model="entity.description"
-            @@commit="updateEntity"
-          />
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableHead> Slug </TableHead>
-        <TableCell>
-          {{ entity.slug }}
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableHead> Due Date </TableHead>
-        <TableCell title="Click the status icon to toggle the value">
-          <AppInputLiveEditText type="date" v-model="entity.due_date" @@commit="updateEntity" />
-        </TableCell>
-      </TableRow>
+    <section class="mt-4 border rounded-md w-full">
+      <Table v-if="entity" class="table-container">
+        <TableRow>
+          <TableHead> Name </TableHead>
+          <TableCell>
+            <AppInputLiveEditText type="text" v-model="entity.name" @@commit="updateEntity" />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableHead> Description </TableHead>
+          <TableCell>
+            <AppInputLiveEditText
+              type="textarea"
+              v-model="entity.description"
+              @@commit="updateEntity"
+            />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableHead> Slug </TableHead>
+          <TableCell>
+            {{ entity.slug }}
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableHead> Due Date </TableHead>
+          <TableCell>
+            <AppInputLiveEditText type="date" v-model="entity.due_date" @@commit="updateEntity" />
+          </TableCell>
+        </TableRow>
 
-      <TableRow>
-        <TableHead> Status </TableHead>
-        <!-- TODO > need to pull the valid list from the Supabase type -->
-        <TableCell class="items-center" title="Click the status icon to toggle the value">
-          <AppInputLiveEditStatus v-model="entity.status" @@commit="updateEntity" />
-        </TableCell>
-      </TableRow>
-    </Table>
+        <TableRow>
+          <TableHead> Status </TableHead>
+          <!-- TODO > need to pull the valid list from the Supabase type -->
+          <TableCell class="items-center">
+            <AppInputLiveEditStatus v-model="entity.status" @@commit="updateEntity" />
+          </TableCell>
+        </TableRow>
+      </Table>
+    </section>
     <section v-if="entity" class="mt-4 flex flex-col w-full">
       <h2>Sub Entities</h2>
       <Button v-if="!noSubEntities" @click="openModal = !openModal" class="mb-4 self-end"
         >+ Add</Button
       >
-      <div class="border table-container">
+      <div class="border table-container rounded-md">
         <article v-if="noSubEntities" class="flex flex-col">
           <Button @click="openModal = !openModal" class="mt-4 mr-4 mb-8 self-end">+ Add</Button>
-          <p class="text-center">No sub entity found.</p>
+          <p class="text-center mb-4">No sub entity found.</p>
         </article>
         <Table v-else>
           <TableHeader>
@@ -136,16 +138,4 @@ const openModal = ref(false)
   </div>
 </template>
 
-<style scoped>
-/* th {
-  @apply w-[100px];
-} */
-
-/* h2 {
-  @apply mb-4 text-lg font-semibold w-fit;
-}
-
-.table-container {
-  @apply overflow-hidden overflow-y-auto rounded-md h-80;
-} */
-</style>
+<style scoped></style>

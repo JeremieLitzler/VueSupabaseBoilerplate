@@ -80,7 +80,7 @@ const deleteSubEntity = async () => {
         </TableRow>
         <TableRow>
           <TableHead> Status </TableHead>
-          <TableCell title="Click the status icon to toggle the value">
+          <TableCell>
             <AppInputLiveEditStatus v-model="subEntity.status" @@commit="updateSubEntity" />
           </TableCell>
         </TableRow>
@@ -99,16 +99,4 @@ const deleteSubEntity = async () => {
   </div>
 </template>
 
-<style scoped>
-/* th {
-  @apply w-[100px];
-} */
-
-/* h2 {
-  @apply mb-4 text-lg font-semibold w-fit;
-} */
-
-/* .table-container {
-  @apply overflow-hidden overflow-y-auto rounded-md h-80;
-} */
-</style>
+<style scoped></style>

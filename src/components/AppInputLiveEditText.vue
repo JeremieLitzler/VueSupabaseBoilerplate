@@ -139,4 +139,17 @@ const stopEditing = () => {
 .live-textarea:focus {
   border: 1px solid black;
 }
+
+@reference "@/assets/index.css";
+
+.pencil {
+  @apply text-slate-500 cursor-pointer;
+}
+.live-input {
+  @apply w-full resize-none p-1 bg-transparent focus:outline-double focus:border-separate focus:bg-slate-100 focus:text-black focus:rounded-sm;
+}
+
+.live-textarea {
+  @apply w-full text-slate-600 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded px-3.5 py-2.5 outline-none focus:bg-white;
+}
 </style>

@@ -4,7 +4,7 @@
       v-if="link.to"
       :to="link.to"
       exact-active-class="text-black bg-green-300"
-      class="flex items-center gap-3 px-4 py-2 transition-colors rounded-md hover:text-primary text-muted-foreground mx-2"
+      class="side-bar-link mx-2"
       :class="{ 'justify-normal': menuOpen, 'justify-center': !menuOpen }"
       :title="link.label"
     >
@@ -13,9 +13,9 @@
         link.label
       }}</span>
     </RouterLink>
-    <button
+    <a
       v-else
-      class="flex items-center gap-3 px-4 py-2 transition-colors rounded-md hover:text-primary text-muted-foreground cursor-pointer w-full mx-0 lg:mx-2"
+      class="side-bar-link cursor-pointer w-full mx-0 lg:mx-2"
       :class="{ 'justify-normal': menuOpen, 'justify-center': !menuOpen }"
       @click="actionClicked(link.action)"
       :title="link.label"
@@ -24,7 +24,7 @@
       <span class="text-nowrap" :class="{ block: menuOpen, hidden: !menuOpen }">{{
         link.label
       }}</span>
-    </button>
+    </a>
   </template>
 </template>
 
