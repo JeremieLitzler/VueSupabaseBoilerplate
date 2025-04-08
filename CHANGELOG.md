@@ -1,3 +1,9 @@
+## [2.3.2](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.1...v2.3.2) (2025-04-08)
+
+### Bug Fixes
+
+* review and fix a few issue with tailwind upgrade ([f60fb0b](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/f60fb0bac2db609fe3607ddf6f43dcd0aed6a5f0))
+
 ## [2.3.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.0...v2.3.1) (2025-04-08)
 
 ### Dependencies
