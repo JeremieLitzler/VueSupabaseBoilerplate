@@ -1,7 +1,7 @@
 <template>
   <aside
     class="flex flex-col h-screen gap-2 border-r fixed bg-muted/40 transition-[width]"
-    :class="{ 'w-52': menuOpen, 'w-24': !menuOpen }"
+    :class="{ 'w-52': menuOpen, 'w-16': !menuOpen }"
   >
     <div class="flex h-16 items-center border-b px-2 lg:px-4 shrink-0 gap-1 justify-between">
       <Button tabindex="0" variant="outline" size="icon" class="w-8 h-8" @click="toggleMenu">
@@ -56,6 +56,7 @@ import Files from '../ui/icon/Files.vue'
 import UserRoundCog from '../ui/icon/UserRoundCog.vue'
 import LogOut from '../ui/icon/LogOut.vue'
 import Settings2 from '../ui/icon/Settings2.vue'
+import PaintBrush from '../ui/icon/PaintBrush.vue'
 
 console.log('SideBar>script:setup...')
 
@@ -96,6 +97,7 @@ const topLinks: LinkProp[] = [
     label: 'Dashboard',
   },
   { to: RouterPathEnum.Entities, icon: Files, label: 'Entities' },
+  { to: RouterPathEnum.StyleGuide, icon: PaintBrush, label: 'Style Guide' },
 ]
 const settingsLinks: LinkProp[] = [
   {

@@ -76,6 +76,10 @@ router.afterEach(() => {
   @apply text-3xl font-extrabold text-primary;
 }
 
+:deep(.error__btn) {
+  @apply max-w-36;
+}
+
 :deep(.error-footer) {
   @apply flex flex-col items-center justify-center gap-5 mt-6 font-light;
 }

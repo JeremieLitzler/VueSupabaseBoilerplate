@@ -3,8 +3,8 @@
     <RouterLink
       v-if="link.to"
       :to="link.to"
-      exact-active-class="text-black bg-green-300"
-      class="side-bar-link mx-2"
+      exact-active-class="text-black"
+      class="side-bar-link"
       :class="{ 'justify-normal': menuOpen, 'justify-center': !menuOpen }"
       :title="link.label"
     >

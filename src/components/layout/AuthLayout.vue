@@ -3,7 +3,7 @@
     <SideBar />
     <div
       class="flex flex-col transition-[margin]"
-      :class="{ 'ml-52': menuOpen, 'ml-24': !menuOpen }"
+      :class="{ 'ml-52': menuOpen, 'ml-16': !menuOpen }"
     >
       <NavBarTop />
 

@@ -95,7 +95,7 @@ const register = () => emits('@register', formData.value)
       ref="captchaRef"
       @@hcaptcha-notification="notifyUserWithCaptchaResponse"
     />
-    <button type="submit" class="btn btn-primary">Register</button>
+    <Button type="submit" class="btn btn-primary">Register</Button>
     <!-- <Button variant="outline" class="w-full"> Login with Google </Button> -->
   </vee-form>
   <div class="flex flex-row items-center">

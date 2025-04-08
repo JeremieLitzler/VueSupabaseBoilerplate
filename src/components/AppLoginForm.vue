@@ -25,10 +25,9 @@
           In test mode, it verifies the captcha.
           See comment of BenW301 to this reply: https://stackoverflow.com/a/55317353/3910066
          -->
-    <button @click="captchaRef.runCaptcha(enableHcaptcha)" type="submit" class="btn btn-primary">
+    <Button @click="captchaRef.runCaptcha(enableHcaptcha)" type="submit" class="btn btn-primary">
       Log in
-    </button>
-    <!-- <button type="submit" class="btn-blue btn-block">Log in</button> -->
+    </Button>
     <div v-if="errorMessage != ''" class="text-xs text-red-500">
       {{ errorMessage }}
     </div>

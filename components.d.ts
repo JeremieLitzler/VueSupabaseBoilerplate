@@ -48,6 +48,7 @@ declare module 'vue' {
     LogOut: typeof import('./src/components/ui/icon/LogOut.vue')['default']
     Menu: typeof import('./src/components/ui/icon/Menu.vue')['default']
     NavBarTop: typeof import('./src/components/layout/NavBarTop.vue')['default']
+    PaintBrush: typeof import('./src/components/ui/icon/PaintBrush.vue')['default']
     PencilLine: typeof import('./src/components/ui/icon/PencilLine.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

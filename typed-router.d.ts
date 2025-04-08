@@ -27,6 +27,7 @@ declare module 'vue-router/auto-routes' {
     '/profiles/[username]': RouteRecordInfo<'/profiles/[username]', '/profiles/:username', { username: ParamValue<true> }, { username: ParamValue<false> }>,
     '/register': RouteRecordInfo<'/register', '/register', Record<never, never>, Record<never, never>>,
     '/settings/': RouteRecordInfo<'/settings/', '/settings', Record<never, never>, Record<never, never>>,
+    '/style-guide': RouteRecordInfo<'/style-guide', '/style-guide', Record<never, never>, Record<never, never>>,
     '/sub-entities/[id]': RouteRecordInfo<'/sub-entities/[id]', '/sub-entities/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
   }
 }

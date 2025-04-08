@@ -9,4 +9,6 @@ export enum RouterPathEnum {
   Register = '/register',
   // Only used to keep the Supabase project alive.
   KeepSupabaseAlive = '/keep-supabase-alive',
+  // To showcase the style guide
+  StyleGuide = '/style-guide',
 }

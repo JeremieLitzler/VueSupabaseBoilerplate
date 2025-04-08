@@ -39,10 +39,10 @@ if (props.statusCode === 406) {
         You'll find lots to explore on the home page.
       </p>
       <RouterLink v-if="!props.nextPage" to="/">
-        <Button class="max-w-36"> Back to homepage </Button>
+        <Button class="error__btn"> Back to homepage </Button>
       </RouterLink>
       <RouterLink v-else :to="props.nextPage">
-        <Button class="max-w-36"> Back </Button>
+        <Button class="error__btn"> Back </Button>
       </RouterLink>
     </div>
   </div>

@@ -4,7 +4,6 @@ export default {
     './components/**/*.{ts,tsx,vue}',
     './app/**/*.{ts,tsx,vue}',
     './src/**/*.{ts,tsx,vue}',
-    //'./formktit.theme.ts',  // enable if using form kit
   ],
-  plugins: [],
+  purge: ['./src/**/*.{html,js,ts,jsx,tsx}'],
 }

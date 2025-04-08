@@ -20,10 +20,10 @@ defineProps<{
     <p v-if="details">Details: {{ details }}</p>
     <div class="error-footer">
       <RouterLink v-if="!nextPage" to="/">
-        <Button class="max-w-36"> Back to homepage </Button>
+        <Button class="error__btn"> Back to homepage </Button>
       </RouterLink>
       <RouterLink v-else :to="nextPage">
-        <Button class="max-w-36"> Back </Button>
+        <Button class="error__btn"> Back </Button>
       </RouterLink>
     </div>
   </div>
