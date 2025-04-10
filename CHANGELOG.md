@@ -1,3 +1,28 @@
+## [2.4.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.2...v2.4.0) (2025-04-10)
+
+### Features
+
+* restyle entities page ([06595b7](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/06595b7ab2b0d0babfab77046fc0af5eeb1c6cda))
+* restyle entities page ([70a6cb9](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/70a6cb9a7f48c4312545782af8dd8614eaace2dc))
+* restyle entity-slug page ([fe0d782](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/fe0d782ccec3f4c20113463a3639033bcade23bb))
+* restyle entity-slug page ([e58e759](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/e58e7598db62af0e3d9685dab0e7516e8d614a40))
+* restyle forms ([e179f7e](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/e179f7e4ceb83c5f33fa3f5c7014a879069522f3))
+* restyle login page, components and layout ([8333f2d](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/8333f2df8c405168145a0ffb65367361680f0428))
+* restyle page container in AuthLayout ([94d3503](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/94d35037273c6c9526253450af79a840501deb4a))
+* restyle page container in AuthLayout ([9e3bdbd](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/9e3bdbd22a5ef2fec91811b09702ff764fe24fe2))
+* restyle page login to fix buttons ([c381c7d](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c381c7d4641135f7d4d335a2a44079869caca543))
+* restyle page settings and profiles/[username] ([139f491](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/139f49114b2583ae283995e3536c63221eee0dcb))
+* restyle page subentity ([ec8beae](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/ec8beaeea077a78ab56031dd34c8be36f49b2b63))
+* restyle sidebar component ([020e49d](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/020e49de84e539c46f79857b01f28e7baa42d7af))
+* restyle sidebarlinks component ([010bd5e](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/010bd5e8ebe446e1a9c3cfa238f4d2715482e22c))
+* restyle style guide page with new AppHeading components ([fe62677](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/fe626779aa3dade43a32770a91f31dc5b240b13e))
+* restyle topbar component ([35d265b](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/35d265bd35b9bba6fa7f4127996525fb34900782))
+
+### Bug Fixes
+
+* editing a subentity does refresh entities and its subentities list ([c04b963](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c04b96341620c87d3a1cd0e85d0292968aced52d))
+* editing a subentity does refresh entities and its subentities list ([d7136fb](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/d7136fb408f62532acf29abfc1f03408b71a548e))
+
 ## [2.3.2](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.1...v2.3.2) (2025-04-08)
 
 ### Bug Fixes
