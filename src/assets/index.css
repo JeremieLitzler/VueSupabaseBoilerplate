@@ -2,67 +2,71 @@
 
 @layer theme {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --brand: var(--color-green-700);
+    --brand-darker: var(--color-green-900);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --background: var(--brand-darker);
+    --foreground: #fbeed0;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --muted: var(--color-green-200);
+    --muted-foreground: #64748b;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --popover: var(--brand-darker);
+    --popover-foreground: #fbeed0;
+
+    --card: var(--brand-darker);
+    --card-foreground: #fbeed0;
 
     --border: var(--muted);
-    --input: 214.3 31.8% 91.4%;
+    --input: #e2e8f0;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--brand-darker);
+    --primary-foreground: #f8fafc;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--color-green-100);
+    --secondary-foreground: var(--brand-darker);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: #e0f2fe; /* sky-100 */
+    --accent-foreground: var(--brand-darker);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: var(--color-red-500);
+    --destructive-foreground: var(--color-red-900);
 
-    --ring: 222.2 84% 4.9%;
+    --ring: #fbeed0;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* TODO: original colors, to adjust if I implement dark mode someday... */
+    --background: #fbeed0;
+    --foreground: #f8fafc;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: #fbeed0;
+    --popover-foreground: #f8fafc;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: #fbeed0;
+    --card-foreground: #f8fafc;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: #1e293b;
+    --input: #1e293b;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: #f8fafc;
+    --primary-foreground: #0f172a;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: #1e293b;
+    --secondary-foreground: #f8fafc;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: #1e293b;
+    --accent-foreground: #f8fafc;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: var(--color-red-900);
+    --destructive-foreground: var(--color-red-500);
 
-    --ring: 212.7 26.8% 83.9%;
+    --ring: #cbd5e1;
   }
 }
 
@@ -72,32 +76,34 @@
   --breakpoint-2xl: 1400px;
 
   /* Color definitions */
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
+  --color-brand: var(--brand);
+  --color-brand-darker: var(--brand-darker);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
 
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
 
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 
   /* Border radius */
   --radius: var(--radius);
@@ -107,23 +113,41 @@
   --radius-sm: calc(var(--radius) - 4px);
 }
 
-@layer typography {
-  h1 {
-    @apply my-4 text-4xl font-extrabold w-fit;
-  }
-  h2 {
-    @apply my-4 text-3xl font-semibold w-fit;
-  }
-  h3 {
-    @apply my-4 text-2xl font-semibold w-fit;
-  }
-  h4 {
-    @apply my-4 text-lg font-semibold w-fit;
-  }
-  p {
-    @apply mb-2 text-sm w-fit;
-  }
+@utility brand-color {
+  color: var(--brand);
 }
+@utility brand-color-darker {
+  color: var(--brand-darker);
+}
+
+p {
+  width: fit-content;
+}
+@utility custom-container {
+  @apply w-full lg:max-w-4xl mx-auto;
+}
+@utility container-form {
+  @apply bg-foreground;
+}
+@utility hover-dark-to-light {
+  @apply hover:text-brand-darker hover:bg-muted;
+}
+@utility hover-light-to-dark {
+  @apply hover:text-white hover:bg-brand-darker;
+}
+@utility hover-destructive {
+  @apply hover:text-white hover:bg-destructive-foreground;
+}
+@utility focus-ring-dark {
+  @apply focus:outline-brand-darker focus:ring-2;
+}
+@utility focus-ring-light {
+  @apply focus:outline-muted focus:ring-2;
+}
+@utility focus-ring-destructive {
+  @apply focus:ring-2 focus:outline-destructive-foreground;
+}
+
 @layer components {
   .container {
     width: 100%;
@@ -137,31 +161,46 @@
   .table-container {
     @apply overflow-hidden overflow-y-auto rounded-md h-80;
   }
+  .field,
+  .link {
+    @apply focus:outline-2;
+  }
+
+  .link {
+    @apply hover:bg-muted hover:text-white hover:border-white;
+  }
 
   .btn {
-    @apply bg-primary w-full p-3 rounded-md text-sm font-medium;
+    @apply text-white text-sm font-medium cursor-pointer w-full p-3 rounded-md;
   }
 
   .btn-primary {
-    @apply bg-accent text-white my-4;
+    @apply bg-brand text-white  my-4;
   }
 
   .btn-secondary {
-    @apply bg-secondary;
+    @apply bg-secondary brand-color-darker;
+  }
+
+  .btn-destructive {
+    @apply bg-destructive text-white hover-destructive focus-ring-destructive;
+  }
+
+  .btn-transparent {
+    @apply bg-transparent border-0 brand-color-darker focus:outline-none focus:ring-0 hover:bg-white hover:text-brand-darker;
   }
 
   .field {
-    @apply border p-2 rounded-md;
+    @apply border p-2 rounded-md hover-dark-to-light focus-ring-dark;
   }
 
   .error {
     @apply mx-auto flex justify-center items-center flex-1 p-10 text-center -mt-20 min-h-[90vh];
   }
   .side-bar-link {
-    @apply flex items-center gap-3 px-4 py-2 transition-colors rounded-md hover:text-primary text-muted-foreground;
+    @apply transition-colors rounded-md flex items-center gap-4 my-1 px-4 py-2;
   }
 }
-
 @layer animate {
   .animate-accordion-down {
     animation: accordion-down 0.2s ease-out;

@@ -5,10 +5,11 @@ import { RouterPathEnum } from '@/types/RouterPathEnum'
 import { formatDateStrToUserFriendly } from './date-format'
 import type { EntityRecordWithRpc } from '@/types/EntityRecordWithRpc'
 
+const headerStyle = 'text-left text-lg text-white hover:text-bg-brand-darker'
 export const columns: ColumnDef<EntityRecordWithRpc>[] = [
   {
     accessorKey: 'name',
-    header: () => h('div', { class: 'text-left' }, 'Name'),
+    header: () => h('div', { class: headerStyle }, 'Name'),
     cell: ({ row }) => {
       // When using render functions, the way we pass children to elements is different than passing them to a custom component.
       // With elements, we can pass them straightaway to the h() function like so:
@@ -24,7 +25,7 @@ export const columns: ColumnDef<EntityRecordWithRpc>[] = [
         RouterLink,
         {
           to: `${RouterPathEnum.Entities}/${row.original.slug}`,
-          class: 'text-left underline hover:bg-muted block w-full font-medium',
+          class: 'text-left underline block w-full font-medium',
         },
         () => row.getValue('name'),
       )
@@ -32,14 +33,14 @@ export const columns: ColumnDef<EntityRecordWithRpc>[] = [
   },
   {
     accessorKey: 'due_date',
-    header: () => h('div', { class: 'text-left' }, 'Due Date'),
+    header: () => h('div', { class: headerStyle }, 'Due Date'),
     cell: ({ row }) => {
       return h('p', formatDateStrToUserFriendly(row.original.due_date).value)
     },
   },
   {
     accessorKey: 'status',
-    header: () => h('div', { class: 'text-left' }, 'Status'),
+    header: () => h('div', { class: headerStyle }, 'Status'),
     cell: ({ row }) => {
       return h(AppInputLiveEditStatus, {
         modelValue: row.original.status,

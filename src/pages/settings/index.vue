@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { StoreCacheKey } from '@/types/StoreCacheKeys'
 
+usePageStore().pageData.title = 'Settings'
 type CacheType = {
   name: string
   key: string | StoreCacheKey
 }
+
 const caches = [
   { name: 'Profiles', key: StoreCacheKey.AllProfiles },
   { name: 'Entities', key: StoreCacheKey.AllEntities },
@@ -27,9 +29,16 @@ const purge = (cache: CacheType) => {
 }
 </script>
 <template>
-  <Button v-for="cache in caches" :key="cache.key" @click="purge(cache)" class="mr-4"
-    >Invalidate {{ cache.name }}</Button
-  >
+  <section>
+    <AppHeading>Cache Control</AppHeading>
+    <Button
+      v-for="cache in caches"
+      :key="cache.key"
+      @click="purge(cache)"
+      class="btn btn-primary hover-light-to-dark focus-ring-light mr-4 w-20"
+      >Invalidate {{ cache.name }}</Button
+    >
+  </section>
 </template>
 
 <style scoped></style>

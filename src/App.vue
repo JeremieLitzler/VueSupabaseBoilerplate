@@ -21,7 +21,7 @@ const GuestLayout = defineAsyncComponent(() => import('@/components/layout/Guest
         <AppError v-if="activeError" />
         <RouterView v-else v-slot="{ Component, route }">
           <Transition name="fade" mode="out-in">
-            <div class="w-full" :key="route.path">
+            <div class="sfc-app" :key="route.path">
               <Suspense v-if="Component" :timeout="0">
                 <!-- With Suspence, the current component remains loaded until
                   the next is loaded.

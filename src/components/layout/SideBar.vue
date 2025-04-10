@@ -1,11 +1,25 @@
 <template>
+  <!-- 
+    `fixed` bring the `aside` on the side of nav and main elements 
+    `h-screen` make the `aside` take the full height
+    `flex` and the related bring the child div content within the viewport
+   -->
   <aside
-    class="flex flex-col h-screen gap-2 border-r fixed bg-muted/40 transition-[width]"
+    class="border-r fixed h-screen flex flex-col gap-2"
     :class="{ 'w-52': menuOpen, 'w-16': !menuOpen }"
   >
-    <div class="flex h-16 items-center border-b px-2 lg:px-4 shrink-0 gap-1 justify-between">
-      <Button tabindex="0" variant="outline" size="icon" class="w-8 h-8" @click="toggleMenu">
-        <Menu />
+    <div class="h-20 w-full flex justify-center items-center gap-1">
+      <Button
+        tabindex="0"
+        class="btn-transparent focus-ring-light p-0 flex justify-center items-center"
+        @click="toggleMenu"
+      >
+        <div v-if="menuOpen" class="p-2 rounded-md hover-light-to-dark flex items-center gap-4">
+          <ChevonsLeft /><span>Collapse</span>
+        </div>
+        <div v-else class="p-2 rounded-md hover-light-to-dark">
+          <ChevronsRight />
+        </div>
       </Button>
 
       <!-- <DropdownMenu>
@@ -31,13 +45,16 @@
         </DropdownMenuContent>
       </DropdownMenu> -->
     </div>
-
-    <nav class="flex flex-col gap-2 justify-between h-full relative">
-      <div>
+    <!-- 
+      `h-full` make the `nav` take the full height, thanks to h-screen above
+      `flex` and related allow the child divs to be at each end of the nav
+      -->
+    <nav class="h-full flex flex-col justify-between">
+      <div class="px-2">
         <SideBarLinks :links="topLinks" />
       </div>
 
-      <div class="border-y text-center bg-background py-3">
+      <div class="border-y bg-brand text-white px-2">
         <SideBarLinks :links="settingsLinks" @@action-clicked="executeAction" />
       </div>
     </nav>
@@ -108,6 +125,7 @@ const settingsLinks: LinkProp[] = [
   },
   { to: RouterPathEnum.Settings, icon: Settings2, label: 'Settings' },
   {
+    to: '#logout',
     icon: LogOut,
     action: SideBarActionsEnum.Logout,
     label: 'Sign out',

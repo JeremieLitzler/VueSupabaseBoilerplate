@@ -1,9 +1,11 @@
 <template>
   <div class="flex flex-col">
-    <Button @click="openModal = !openModal" class="mb-4 self-end">+ Add</Button>
-    <FormCreateEntity v-model="openModal" />
+    <div class="flex flex-col w-20">
+      <Button @click="openModal = !openModal" class="btn-primary self-end">+ Add</Button>
+    </div>
     <DataTable v-if="entities" :columns :data="entities" />
   </div>
+  <FormCreateEntity v-model="openModal" />
 </template>
 
 <script setup lang="ts">

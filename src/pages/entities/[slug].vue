@@ -44,9 +44,12 @@ const openModal = ref(false)
 </script>
 
 <template>
-  <div class="lg:container flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center items-center">
     <FormCreateSubEntity v-model="openModal" />
-    <Button variant="destructive" class="self-end mt-4 w-full max-w-20" @click="deleteEntity">
+    <Button
+      class="btn-destructive self-end mt-4 flex justify-center items-center gap-4 w-24"
+      @click="deleteEntity"
+    >
       <span v-if="deleting" class="animate-spin">
         <LoaderCircle />
       </span>
@@ -96,14 +99,21 @@ const openModal = ref(false)
       </Table>
     </section>
     <section v-if="entity" class="mt-4 flex flex-col w-full">
-      <h2>Sub Entities</h2>
-      <Button v-if="!noSubEntities" @click="openModal = !openModal" class="mb-4 self-end"
+      <AppHeading heading-type="h2">Sub Entities</AppHeading>
+      <Button
+        v-if="!noSubEntities"
+        @click="openModal = !openModal"
+        class="btn-primary hover-light-to-dark focus-ring-light mb-4 w-20 self-end"
         >+ Add</Button
       >
       <div class="border table-container rounded-md">
-        <article v-if="noSubEntities" class="flex flex-col">
-          <Button @click="openModal = !openModal" class="mt-4 mr-4 mb-8 self-end">+ Add</Button>
-          <p class="text-center mb-4">No sub entity found.</p>
+        <article v-if="noSubEntities" class="flex flex-col items-end">
+          <Button
+            @click="openModal = !openModal"
+            class="btn-primary hover-light-to-dark focus-ring-light mx-4 w-20 self-end"
+            >+ Add</Button
+          >
+          <p class="text-2xl self-center mb-4">No sub entity found.</p>
         </article>
         <Table v-else>
           <TableHeader>

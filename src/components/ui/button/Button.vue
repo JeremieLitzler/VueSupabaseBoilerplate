@@ -4,23 +4,17 @@ import { cn } from '@/lib/utils'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { type ButtonVariants, buttonVariants } from '.'
 
-interface Props extends PrimitiveProps {
+interface Props {
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  as: 'button',
-})
+const props = withDefaults(defineProps<Props>(), {})
 </script>
 
 <template>
-  <Primitive
-    :as="as"
-    :as-child="asChild"
-    :class="cn(buttonVariants({ variant, size }), props.class)"
-  >
-    <slot />
-  </Primitive>
+  <button :class="cn('sfc-button btn', props.class)">
+    <slot></slot>
+  </button>
 </template>

@@ -20,10 +20,11 @@ watch(
 await store.getSubEntity(id)
 const formattedDueDate = computed(() => formatDateStrToUserFriendly(subEntity.value?.due_date))
 // Update logic
-const updateSubEntity = () => {
+const updateSubEntity = async () => {
   console.log('updateSubEntity triggered', subEntity.value)
 
   store.updateSubEntity()
+  await entityStore.refreshEntity(subEntity.value?.entities?.slug ?? '')
 }
 
 // Delete Logic
@@ -40,8 +41,11 @@ const deleteSubEntity = async () => {
 </script>
 
 <template>
-  <div class="lg:container flex flex-col justify-center items-center">
-    <Button variant="destructive" class="self-end mt-4 w-full max-w-20" @click="deleteSubEntity">
+  <div class="flex flex-col justify-center items-center">
+    <Button
+      class="btn-destructive flex justify-center items-center gap-2 w-24 self-end"
+      @click="deleteSubEntity"
+    >
       <span v-if="deleting" class="mr-0 animate-spin">
         <LoaderCircle />
       </span>

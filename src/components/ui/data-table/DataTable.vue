@@ -20,7 +20,7 @@ const table = useVueTable({
 </script>
 
 <template>
-  <div class="border rounded-md">
+  <div class="border rounded-md bg-brand">
     <Table>
       <TableHeader>
         <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
@@ -33,7 +33,7 @@ const table = useVueTable({
           </TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody class="bg-white">
         <template v-if="table.getRowModel().rows?.length">
           <TableRow
             v-for="row in table.getRowModel().rows"

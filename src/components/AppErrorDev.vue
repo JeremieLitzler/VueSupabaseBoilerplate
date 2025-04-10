@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import AppHeading from './AppHeading.vue'
+
 defineProps<{
   message: string
   customCode: number
@@ -13,8 +15,10 @@ defineProps<{
 <template>
   <div>
     <iconify-icon icon="lucide:triangle-alert" class="error__icon" />
-    <h1 class="error__code" v-if="statusCode">Status Code: {{ statusCode }}</h1>
-    <h2 class="error__msg">{{ message }}</h2>
+    <AppHeading heading-type="h1" class="error__code" v-if="statusCode"
+      >Status Code: {{ statusCode }}</AppHeading
+    >
+    <AppHeading class="error__msg">{{ message }}</AppHeading>
     <p>Custom code: {{ customCode || code }}</p>
     <p v-if="hint">Hint: {{ hint }}</p>
     <p v-if="details">Details: {{ details }}</p>

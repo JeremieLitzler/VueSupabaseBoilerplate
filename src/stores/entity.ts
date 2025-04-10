@@ -158,5 +158,6 @@ export const useEntityStore = defineStore('entity-store', () => {
     createEntity,
     updateEntity,
     deleteEntity,
+    validateCacheEntity,
   }
 })

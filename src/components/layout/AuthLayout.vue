@@ -7,11 +7,11 @@
     >
       <NavBarTop />
 
-      <main class="flex flex-col flex-1 gap-4 p-4 lg:gap-6 lg:p-6">
+      <main class="custom-container flex flex-col flex-1 gap-4 p-4 lg:gap-6 lg:p-6">
         <div class="flex items-center">
-          <h1 class="text-lg font-semibold md:text-2xl">{{ pageData.title }}</h1>
+          <AppHeading heading-type="h1" class="my-2">{{ pageData.title }}</AppHeading>
         </div>
-        <slot />
+        <slot></slot>
       </main>
     </div>
   </div>

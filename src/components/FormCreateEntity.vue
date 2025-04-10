@@ -43,7 +43,7 @@ const submitNewEntity = async () => {
 }
 </script>
 <template>
-  <Sheet v-model:open="sheetOpen">
+  <Sheet v-model:open="sheetOpen" class="container-form">
     <SheetContent>
       <SheetHeader>
         <SheetTitle>Let's create a new Entity</SheetTitle>
@@ -73,7 +73,9 @@ const submitNewEntity = async () => {
           label="Description"
           :rules="{ regex: /^[\s\S]{0,500}$/ }"
         />
-        <Button type="submit" class="btn btn-primary">Create</Button>
+        <Button type="submit" class="btn btn-primary hover-light-to-dark focus-ring-dark"
+          >Create</Button
+        >
       </vee-form>
     </SheetContent>
   </Sheet>

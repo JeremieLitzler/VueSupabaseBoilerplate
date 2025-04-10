@@ -6,8 +6,8 @@
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <p class="mt-2 text-gray-500">@{{ profile?.username }}</p>
-      <h1 class="mt-5 text-4xl font-bold">{{ profile?.full_name }}</h1>
-      <p class="mt-2 text-sm">{{ profile?.bio }}</p>
+      <AppHeading heading-type="h1" class="mt-5">{{ profile?.full_name }}</AppHeading>
+      <p class="">{{ profile?.bio }}</p>
     </div>
     <Button>Edit profile</Button>
   </div>

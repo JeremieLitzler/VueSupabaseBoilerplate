@@ -1,5 +1,5 @@
 <template>
-  <div class="items-center justify-center pt-5 sm:flex sm:pt-0">
+  <div class="layout-guest flex justify-center md:h-[100vh] items-center mx-auto max-w-md">
     <slot></slot>
   </div>
 </template>

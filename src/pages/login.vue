@@ -12,12 +12,13 @@ const sigin = async (request: UserLoginRequest) => {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full justify-center items-center p-10 text-center min-h-[90vh]">
-    <Card class="max-w-sm w-full mx-auto">
+  <div class="page-login m-4">
+    <Card class="p-6 border rounded-md">
       <CardHeader>
-        <CardTitle class="text-2xl"> Login </CardTitle>
-        <CardDescription> Login to your account </CardDescription>
+        <CardTitle class="my-0" :is-page-title="true"> Login </CardTitle>
+        <CardDescription> Use your credentials to login to your account </CardDescription>
       </CardHeader>
+      <hr class="my-8 w-full" />
       <CardContent>
         <AppLoginForm @@login="sigin" />
       </CardContent>

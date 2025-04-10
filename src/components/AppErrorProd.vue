@@ -30,7 +30,7 @@ if (props.statusCode === 406) {
 <template>
   <div>
     <iconify-icon icon="lucide:triangle-alert" class="error__icon" />
-    <h1 v-if="error.code > 0" class="error__code">{{ error.code }}</h1>
+    <AppHeading heading-type="h1" v-if="error.code > 0" class="error__code">{{ error.code }}</AppHeading heading-type="h1">
 
     <p class="error__msg">{{ error.msg }}</p>
 

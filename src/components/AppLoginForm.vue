@@ -15,7 +15,7 @@
       type="password"
     />
     <app-captcha
-      class="mt-4 overflow-hidden"
+      class="mt-4 w-full overflow-hidden"
       ref="captchaRef"
       v-if="enableHcaptcha"
       @@hcaptcha-notification="notifyUserWithCaptchaResponse"
@@ -25,17 +25,24 @@
           In test mode, it verifies the captcha.
           See comment of BenW301 to this reply: https://stackoverflow.com/a/55317353/3910066
          -->
-    <Button @click="captchaRef.runCaptcha(enableHcaptcha)" type="submit" class="btn btn-primary">
+    <Button
+      @click="captchaRef.runCaptcha(enableHcaptcha)"
+      type="submit"
+      class="btn-primary hover-light-to-dark"
+    >
       Log in
     </Button>
     <div v-if="errorMessage != ''" class="text-xs text-red-500">
       {{ errorMessage }}
     </div>
     <div v-if="enableRegister" class="flex flex-row items-center">
-      <span class="flex-auto mr-2">Create an account?</span>
-      <router-link to="/register" class="btn btn-secondary underline flex-1">
+      <span class="flex-auto gap-4">Create an account?</span>
+      <AppLink
+        to="/register"
+        class="btn btn-secondary hover-dark-to-light text-center underline flex-1"
+      >
         Register
-      </router-link>
+      </AppLink>
     </div>
   </vee-form>
 </template>
