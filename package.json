@@ -27,7 +27,7 @@
     "@vueuse/core": "^12.7.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "pinia": "^3.0.1",
+    "pinia": "^3.0.2",
     "radix-vue": "^1.9.9",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
