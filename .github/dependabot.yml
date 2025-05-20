@@ -14,3 +14,4 @@ updates:
       - "npm dependencies"
     # Allow up to 5 open pull requests
     open-pull-requests-limit: 5
+    target-branch: "develop"
