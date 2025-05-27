@@ -1,72 +1,87 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer theme {
   :root {
+    --background: var(--color-stone-100);
+    --foreground: var(--color-stone-800);
+
+    --brand-lighter: var(--color-green-100);
+    --brand-light: var(--color-green-300);
     --brand: var(--color-green-700);
     --brand-darker: var(--color-green-900);
 
-    --background: var(--brand-darker);
-    --foreground: #fbeed0;
+    --accent-foreground: var(--color-stone-200);
+    --accent: var(--color-stone-800);
 
-    --muted: var(--color-green-200);
-    --muted-foreground: #64748b;
+    --muted: var(--brand-light);
+    --muted-foreground: var(--brand-darker);
 
-    --popover: var(--brand-darker);
-    --popover-foreground: #fbeed0;
-
-    --card: var(--brand-darker);
-    --card-foreground: #fbeed0;
-
-    --border: var(--muted);
-    --input: #e2e8f0;
-
-    --primary: var(--brand-darker);
-    --primary-foreground: #f8fafc;
-
-    --secondary: var(--color-green-100);
-    --secondary-foreground: var(--brand-darker);
-
-    --accent: #e0f2fe; /* sky-100 */
-    --accent-foreground: var(--brand-darker);
+    --border: var(--brand-light);
 
     --destructive: var(--color-red-500);
-    --destructive-foreground: var(--color-red-900);
+    --destructive-foreground: var(--color-red-100);
+    --destructive-darker: var(--color-red-800);
 
-    --ring: #fbeed0;
+    /* Forms and co */
+    --input-background: var(--color-brand-lighter);
+    --input-foreground: var(--color-brand-darker);
+    --input-mouse: var(--color-brand-light);
+
+    /* Table and co */
+    --table-header-background: var(--color-green-900);
+    --table-header-foreground: var(--color-green-100);
+    --table-mouse-background: var(--table-header-foreground);
+    --table-mouse-foreground: var(--table-header-background);
+
+    /* For links or buttons */
+    --cta-base: var(--color-green-700);
+    --cta-darker: var(--color-green-900);
+    --cta-lighter: var(--color-green-100);
+    --cta-light: var(--color-green-300);
+    --cta-neutral-dark: var(--color-stone-800);
+    --cta-neutral-light: var(--color-stone-200);
+    --cta-destructive-base: var(--destructive);
+    --cta-destructive-lighter: var(--color-white);
+    --cta-destructive-darker: var(--destructive-darker);
 
     --radius: 0.5rem;
+
+    /*unchanging in dark*/
+    --fixed-table-header: var(--color-green-900);
+
+    background-color: var(--background);
+    color: var(--foreground);
   }
 
   .dark {
-    /* TODO: original colors, to adjust if I implement dark mode someday... */
-    --background: #fbeed0;
-    --foreground: #f8fafc;
+    --background: var(--color-stone-800);
+    --foreground: var(--color-stone-100);
 
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
+    --brand-darker: var(--color-green-50);
+    --brand-light: var(--color-green-900);
+    --brand-lighter: var(--color-green-700);
 
-    --popover: #fbeed0;
-    --popover-foreground: #f8fafc;
+    --accent: var(--color-stone-200);
+    --accent-foreground: var(--color-stone-800);
 
-    --card: #fbeed0;
-    --card-foreground: #f8fafc;
+    --muted: var(--brand-darker);
+    --muted-foreground: var(--brand-light);
 
-    --border: #1e293b;
-    --input: #1e293b;
+    --color-white: var(--color-black);
+    --color-black: var(--color-white);
 
-    --primary: #f8fafc;
-    --primary-foreground: #0f172a;
+    /* Forms and co */
+    --input-background: var(--color-brand-darker);
+    --input-foreground: var(--color-brand-lighter);
+    --input-mouse: var(--color-green-100);
 
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-
-    --accent: #1e293b;
-    --accent-foreground: #f8fafc;
-
-    --destructive: var(--color-red-900);
-    --destructive-foreground: var(--color-red-500);
-
-    --ring: #cbd5e1;
+    /* Table and co */
+    --table-header-background: var(--color-green-900);
+    --table-header-foreground: var(--color-green-100);
+    --table-mouse-background: var(--table-header-foreground);
+    --table-mouse-foreground: var(--table-header-background);
   }
 }
 
@@ -78,20 +93,26 @@
   /* Color definitions */
   --color-brand: var(--brand);
   --color-brand-darker: var(--brand-darker);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-brand-light: var(--brand-light);
+  --color-brand-lighter: var(--brand-lighter);
+  --color-border: var(--brand-lighter);
+  --color-input: var(--brand-lighter);
+  --color-ring: var(--brand-lighter);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-dark: var(--background);
+  --color-light: var(--foreground);
 
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary: var(--brand-darker);
+  --color-primary-foreground: var(--brand-lighter);
+
+  --color-secondary: var(--brand);
+  --color-secondary-foreground: var(--brand-light);
 
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-darker: var(--destructive-darker);
 
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -99,11 +120,27 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  /* Forms and co */
+  --color-input-background: var(--input-background);
+  --color-input-foreground: var(--input-foreground);
+  --color-input-mouse: var(--input-mouse);
 
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  /* Table and co */
+  --color-table-header-background: var(--table-header-background);
+  --color-table-header-foreground: var(--table-header-foreground);
+  --color-table-mouse-background: var(--table-mouse-background);
+  --color-table-mouse-foreground: var(--table-mouse-foreground);
+
+  /* For links or buttons */
+  --color-cta-base: var(--cta-base);
+  --color-cta-darker: var(--cta-darker);
+  --color-cta-lighter: var(--cta-lighter);
+  --color-cta-light: var(--cta-light);
+  --color-cta-neutral-dark: var(--cta-neutral-dark);
+  --color-cta-neutral-light: var(--cta-neutral-light);
+  --color-cta-destructive: var(--cta-destructive-base);
+  --color-cta-destructive-lighter: var(--cta-destructive-lighter);
+  --color-cta-destructive-darker: var(--cta-destructive-darker);
 
   /* Border radius */
   --radius: var(--radius);
@@ -111,6 +148,9 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* Custom */
+  --color-fixed-table-header: var(--fixed-table-header);
 }
 
 @utility brand-color {
@@ -118,6 +158,12 @@
 }
 @utility brand-color-darker {
   color: var(--brand-darker);
+}
+@utility brand-color-light {
+  color: var(--brand-light);
+}
+@utility brand-color-lighter {
+  color: var(--brand-lighter);
 }
 
 p {
@@ -128,24 +174,6 @@ p {
 }
 @utility container-form {
   @apply bg-foreground;
-}
-@utility hover-dark-to-light {
-  @apply hover:text-brand-darker hover:bg-muted;
-}
-@utility hover-light-to-dark {
-  @apply hover:text-white hover:bg-brand-darker;
-}
-@utility hover-destructive {
-  @apply hover:text-white hover:bg-destructive-foreground;
-}
-@utility focus-ring-dark {
-  @apply focus:outline-brand-darker focus:ring-2;
-}
-@utility focus-ring-light {
-  @apply focus:outline-muted focus:ring-2;
-}
-@utility focus-ring-destructive {
-  @apply focus:ring-2 focus:outline-destructive-foreground;
 }
 
 @layer components {
@@ -166,39 +194,28 @@ p {
     @apply focus:outline-2;
   }
 
-  .link {
-    @apply hover:bg-muted hover:text-white hover:border-white;
+  .label {
+    @apply text-foreground;
   }
 
-  .btn {
-    @apply text-white text-sm font-medium cursor-pointer w-full p-3 rounded-md;
+  .modal {
+    @apply bg-background w-full h-full max-w-full max-h-full fixed inset-0 z-50 flex flex-col;
   }
-
-  .btn-primary {
-    @apply bg-brand text-white  my-4;
+  .modal:not([open]) {
+    @apply hidden;
   }
-
-  .btn-secondary {
-    @apply bg-secondary brand-color-darker;
-  }
-
-  .btn-destructive {
-    @apply bg-destructive text-white hover-destructive focus-ring-destructive;
-  }
-
-  .btn-transparent {
-    @apply bg-transparent border-0 brand-color-darker focus:outline-none focus:ring-0 hover:bg-white hover:text-brand-darker;
-  }
-
   .field {
-    @apply border p-2 rounded-md hover-dark-to-light focus-ring-dark;
+    @apply bg-input-background text-input-foreground hover:bg-input-mouse focus:bg-input-background focus:text-input-foreground border p-2 rounded-md;
   }
 
   .error {
     @apply mx-auto flex justify-center items-center flex-1 p-10 text-center -mt-20 min-h-[90vh];
   }
   .side-bar-link {
-    @apply transition-colors rounded-md flex items-center gap-4 my-1 px-4 py-2;
+    @apply text-cta-neutral-dark hover:bg-cta-lighter rounded-md flex items-center gap-4 my-1 px-4 py-2;
+  }
+  .dark .side-bar-link {
+    @apply text-cta-neutral-light hover:bg-cta-light hover:text-cta-neutral-dark rounded-md flex items-center gap-4 my-1 px-4 py-2;
   }
 }
 @layer animate {

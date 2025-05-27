@@ -47,13 +47,14 @@ const openModal = ref(false)
   <div class="flex flex-col justify-center items-center">
     <FormCreateSubEntity v-model="openModal" />
     <Button
-      class="btn-destructive self-end mt-4 flex justify-center items-center gap-4 w-24"
+      variant="destructive"
+      class="flex justify-center items-center gap-2 w-24 self-end"
       @click="deleteEntity"
     >
       <span v-if="deleting" class="animate-spin">
         <LoaderCircle />
       </span>
-      <span v-else class="text-white">
+      <span v-else>
         <Trash2 />
       </span>
       Delete</Button
@@ -98,26 +99,19 @@ const openModal = ref(false)
         </TableRow>
       </Table>
     </section>
-    <section v-if="entity" class="mt-4 flex flex-col w-full">
-      <AppHeading heading-type="h2">Sub Entities</AppHeading>
-      <Button
-        v-if="!noSubEntities"
-        @click="openModal = !openModal"
-        class="btn-primary hover-light-to-dark focus-ring-light mb-4 w-20 self-end"
+    <section v-if="entity" class="mt-2 flex flex-col w-full">
+      <AppHeading heading-type="h2" class="mt-8">Sub Entities</AppHeading>
+      <Button v-if="!noSubEntities" @click="openModal = !openModal" class="mb-4 w-20 self-end"
         >+ Add</Button
       >
       <div class="border table-container rounded-md">
         <article v-if="noSubEntities" class="flex flex-col items-end">
-          <Button
-            @click="openModal = !openModal"
-            class="btn-primary hover-light-to-dark focus-ring-light mx-4 w-20 self-end"
-            >+ Add</Button
-          >
+          <Button @click="openModal = !openModal" class="m-4 w-20 self-end">+ Add</Button>
           <p class="text-2xl self-center mb-4">No sub entity found.</p>
         </article>
         <Table v-else>
           <TableHeader>
-            <TableRow>
+            <TableRow :disable-hover="true">
               <TableHead> Name </TableHead>
               <TableHead> Status </TableHead>
               <TableHead> Due Date </TableHead>
@@ -129,7 +123,7 @@ const openModal = ref(false)
                 ><RouterLink
                   :to="`${RouterPathEnum.SubEntities}/${subEntity.id}`"
                   :key="subEntity.id"
-                  class="text-left underline hover:bg-muted block w-full font-medium p-4"
+                  class="text-left underline block w-full font-medium p-4"
                   >{{ subEntity.name }}</RouterLink
                 ></TableCell
               >

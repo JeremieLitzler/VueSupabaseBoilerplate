@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col mt-4">
-    <label class="self-start pb-2" :for="name">{{ label }}</label>
+    <label class="label self-start pb-2" :for="name">{{ label }}</label>
     <vee-field
       v-if="as"
       :as

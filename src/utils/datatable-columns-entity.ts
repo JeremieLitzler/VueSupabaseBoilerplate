@@ -5,7 +5,7 @@ import { RouterPathEnum } from '@/types/RouterPathEnum'
 import { formatDateStrToUserFriendly } from './date-format'
 import type { EntityRecordWithRpc } from '@/types/EntityRecordWithRpc'
 
-const headerStyle = 'text-left text-lg text-white hover:text-bg-brand-darker'
+const headerStyle = 'text-left text-lg'
 export const columns: ColumnDef<EntityRecordWithRpc>[] = [
   {
     accessorKey: 'name',

@@ -5,4 +5,5 @@ export interface LinkProp {
   action?: SideBarActionsEnum
   icon: Object
   label: string
+  cssClass?: string
 }

@@ -12,12 +12,13 @@ const signup = async (formData: RegistrationData) => {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full justify-center items-center p-10 text-center min-h-[90vh]">
-    <Card class="max-w-sm w-full mx-auto">
+  <div class="page-register m-4">
+    <Card class="p-6 border rounded-md">
       <CardHeader>
-        <CardTitle class="text-2xl"> Register </CardTitle>
+        <CardTitle class="my-0" :is-page-title="true">Register</CardTitle>
         <CardDescription> Create a new account </CardDescription>
       </CardHeader>
+      <hr class="my-8 w-full" />
       <CardContent>
         <!-- <div class="flex flex-col gap-4 mb-4 justify-center items-center">
           <Button variant="outline" class="w-full"> Register with Google </Button>

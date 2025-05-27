@@ -132,9 +132,6 @@ declare global {
   export type { ButtonVariants } from './src/components/ui/button/index'
   import('./src/components/ui/button/index')
   // @ts-ignore
-  export type { SheetVariants } from './src/components/ui/sheet/index'
-  import('./src/components/ui/sheet/index')
-  // @ts-ignore
   export type { AvatarProfile } from './src/types/AvatarProfile'
   import('./src/types/AvatarProfile')
   // @ts-ignore

@@ -20,10 +20,14 @@ const table = useVueTable({
 </script>
 
 <template>
-  <div class="border rounded-md bg-brand">
+  <div class="border rounded-md">
     <Table>
       <TableHeader>
-        <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
+        <TableRow
+          :disable-hover="true"
+          v-for="headerGroup in table.getHeaderGroups()"
+          :key="headerGroup.id"
+        >
           <TableHead v-for="header in headerGroup.headers" :key="header.id">
             <FlexRender
               v-if="!header.isPlaceholder"
@@ -33,7 +37,7 @@ const table = useVueTable({
           </TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody class="bg-white">
+      <TableBody>
         <template v-if="table.getRowModel().rows?.length">
           <TableRow
             v-for="row in table.getRowModel().rows"

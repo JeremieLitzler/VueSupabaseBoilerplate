@@ -31,11 +31,7 @@ const purge = (cache: CacheType) => {
 <template>
   <section>
     <AppHeading>Cache Control</AppHeading>
-    <Button
-      v-for="cache in caches"
-      :key="cache.key"
-      @click="purge(cache)"
-      class="btn btn-primary hover-light-to-dark focus-ring-light mr-4 w-20"
+    <Button v-for="cache in caches" :key="cache.key" @click="purge(cache)"
       >Invalidate {{ cache.name }}</Button
     >
   </section>

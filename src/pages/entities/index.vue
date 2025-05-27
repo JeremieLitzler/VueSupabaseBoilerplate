@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
-    <div class="flex flex-col w-20">
-      <Button @click="openModal = !openModal" class="btn-primary self-end">+ Add</Button>
+    <div class="flex justify-end w-24 self-end">
+      <Button class="mb-4" @click="openModal = !openModal">+ Add</Button>
     </div>
     <DataTable v-if="entities" :columns :data="entities" />
   </div>

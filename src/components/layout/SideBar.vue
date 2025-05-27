@@ -11,13 +11,15 @@
     <div class="h-20 w-full flex justify-center items-center gap-1">
       <Button
         tabindex="0"
-        class="btn-transparent focus-ring-light p-0 flex justify-center items-center"
+        variant="invisible"
+        size="outline"
+        class="m-2 flex justify-center items-center"
         @click="toggleMenu"
       >
-        <div v-if="menuOpen" class="p-2 rounded-md hover-light-to-dark flex items-center gap-4">
+        <div v-if="menuOpen" class="p-2 rounded-md flex items-center gap-4">
           <ChevonsLeft /><span>Collapse</span>
         </div>
-        <div v-else class="p-2 rounded-md hover-light-to-dark">
+        <div v-else class="p-2 rounded-md">
           <ChevronsRight />
         </div>
       </Button>
@@ -54,7 +56,7 @@
         <SideBarLinks :links="topLinks" />
       </div>
 
-      <div class="border-y bg-brand text-white px-2">
+      <div class="border-y px-2">
         <SideBarLinks :links="settingsLinks" @@action-clicked="executeAction" />
       </div>
     </nav>
@@ -123,7 +125,11 @@ const settingsLinks: LinkProp[] = [
     icon: UserRoundCog,
     label: 'Profile',
   },
-  { to: RouterPathEnum.Settings, icon: Settings2, label: 'Settings' },
+  {
+    to: RouterPathEnum.Settings,
+    icon: Settings2,
+    label: 'Settings',
+  },
   {
     to: '#logout',
     icon: LogOut,

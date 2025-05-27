@@ -3,31 +3,37 @@
     <AppLink
       v-if="!link.action"
       :to="link.to"
-      class="side-bar-link hover-dark-to-light focus-ring-dark"
+      class="side-bar-link"
       :class="{ 'justify-normal': menuOpen, 'justify-center': !menuOpen }"
       :title="link.label"
     >
       <component :is="link.icon"></component>
-      <span class="text-nowrap" :class="{ block: menuOpen, hidden: !menuOpen }">{{
-        link.label
-      }}</span>
+      <span
+        class="text-nowrap"
+        :class="(cn(link.cssClass), { block: menuOpen, hidden: !menuOpen })"
+        >{{ link.label }}</span
+      >
     </AppLink>
     <Button
       v-else
-      class="side-bar-link hover-dark-to-light focus-ring-light"
+      variant="invisible"
+      class="side-bar-link"
       :class="{ 'justify-normal': menuOpen, 'justify-center': !menuOpen }"
       @click="actionClicked(link.action)"
       :title="link.label"
     >
       <component :is="link.icon"></component>
-      <span class="text-nowrap" :class="{ block: menuOpen, hidden: !menuOpen }">{{
-        link.label
-      }}</span>
+      <span
+        class="text-nowrap"
+        :class="(cn(link.cssClass), { block: menuOpen, hidden: !menuOpen })"
+        >{{ link.label }}</span
+      >
     </Button>
   </template>
 </template>
 
 <script setup lang="ts">
+import { cn } from '@/lib/utils'
 import type { LinkProp } from '@/types/LinkProp'
 import type { SideBarActionsEnum } from '@/types/SideBarActionsEnum'
 import type { SideBarLinkAction } from '@/types/SideBarLinkAction'

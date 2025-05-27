@@ -1,5 +1,5 @@
 <template>
-  <AppHeading class="text-black">Headings</AppHeading>
+  <AppHeading class="text-foreground">Headings</AppHeading>
 
   <AppHeading heading-type="h1">H1 with brand color by default</AppHeading>
   <hr />
@@ -9,15 +9,15 @@
   <hr />
   <AppHeading class="text-purple-500">H2</AppHeading>
   <hr />
-  <AppHeading heading-type="h3" class="bg-muted">H3 default</AppHeading>
+  <AppHeading heading-type="h3">H3 default</AppHeading>
   <hr />
-  <AppHeading heading-type="h3" class="my-0 bg-muted">H3 with no margin</AppHeading>
+  <AppHeading heading-type="h3" class="my-0">H3 with no margin</AppHeading>
   <hr />
-  <AppHeading heading-type="h3" class="my-16 bg-muted">H3 with custom margin</AppHeading>
+  <AppHeading heading-type="h3" class="my-16">H3 with custom margin</AppHeading>
   <hr />
   <AppHeading heading-type="h4">H4</AppHeading>
   <hr />
-  <AppHeading class="text-black">Paragraphs</AppHeading>
+  <AppHeading class="text-foreground">Paragraphs</AppHeading>
   <p>Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph</p>
   <p>
     <span class="text-primary">primary color</span> &nbsp;
@@ -35,17 +35,13 @@
     <span class="text-muted bg-brand-darker">white over darker brand color</span> &nbsp;
   </p>
 
-  <AppHeading class="text-black">Buttons</AppHeading>
-  <Button class="my-1">a base button</Button>
-  <Button class="hover:bg-muted hover:text-brand-darker my-1"
-    >a base button with muted hover</Button
-  >
-  <Button class="bg-muted text-brand my-1">a muted button with brand color</Button>
-  <Button class="bg-muted text-brand hover:bg-brand-darker hover:text-white my-1"
-    >a muted button with brand color with hover</Button
-  >
-  <Button class="bg-muted text-brand-darker my-1">a muted button with darker brand color</Button>
-  <Button class="bg-muted text-brand-darker my-1">a muted button with darker brand color</Button>
+  <AppHeading class="text-foreground">Buttons</AppHeading>
+  <Button variant="default" class="my-1">a default button</Button>
+  <Button variant="secondary" class="my-1">a secondary button</Button>
+  <Button variant="ghost" class="my-1">a ghost button</Button>
+  <Button variant="outline" class="my-1">an outlined button</Button>
+  <Button variant="link" class="my-1">a link button</Button>
+  <Button variant="destructive" class="my-1">a destructive button</Button>
 </template>
 
 <script setup lang="ts">

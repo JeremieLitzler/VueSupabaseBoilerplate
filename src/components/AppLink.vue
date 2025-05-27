@@ -33,6 +33,6 @@ const isExternal = computed(() => {
 @reference '@/assets/index.css';
 
 .router-link-active[aria-current='page'] {
-  @apply bg-brand text-white hover-light-to-dark;
+  @apply bg-brand-darker text-background;
 }
 </style>
