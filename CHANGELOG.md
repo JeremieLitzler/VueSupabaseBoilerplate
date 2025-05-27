@@ -1,3 +1,23 @@
+## [2.5.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.4.0...v2.5.0) (2025-05-27)
+
+### Features
+
+* apply dark mode to modals ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([7f8e279](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/7f8e2799b0a02c5f4b9f85b5d998e99397ba27df))
+* complete dark mode ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([163fcc5](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/163fcc582b9559f5ad12dc6caafc676c8c676c79))
+* reactivate dark mode toggle ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([b1708aa](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/b1708aacd540734c31bb92afd865e3849dd6dc86))
+
+### Bug Fixes
+
+* resolve issue [#123](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/123) ([939d6b5](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/939d6b539933522771d294aa5e8b3d59d11546de))
+
+### Others
+
+* remove Sheet component and related ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([7ee8b63](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/7ee8b63ef24ee6e25ada759c3dc3a4b0051bc507))
+
+### Dependencies
+
+* **deps:** bump vue-router from 4.5.0 to 4.5.1 ([678a8eb](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/678a8eb4c3d7cbd3c55f6780553f1d4366390d66))
+
 ## [2.4.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.2...v2.4.0) (2025-04-10)
 
 ### Features
