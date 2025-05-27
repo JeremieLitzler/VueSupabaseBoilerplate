@@ -1,3 +1,9 @@
+## [2.5.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.0...v2.5.1) (2025-05-27)
+
+### Bug Fixes
+
+* resolve issue [#125](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/125) ([2e2535a](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/2e2535a5c8ba5f68c28d112921c34a6cfa03c6dd))
+
 ## [2.5.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.4.0...v2.5.0) (2025-05-27)
 
 ### Features
