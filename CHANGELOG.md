@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.1...v2.5.2) (2025-12-16)
+
+### Dependencies
+
+* **deps:** bump @netlify/functions from 2.8.2 to 5.0.1 ([993e80b](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/993e80ba3b2eda8384ff69c8495327b7d8826dad))
+* **deps:** bump the npm_and_yarn group across 1 directory with 3 updates ([c7a6ef3](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c7a6ef38df382049ea40004f2c03e694c7a29f7c))
+
 ## [2.5.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.0...v2.5.1) (2025-05-27)
 
 ### Bug Fixes
