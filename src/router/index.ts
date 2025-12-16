@@ -5,7 +5,7 @@
 //
 // <reference types="unplugin-vue-router/client" />
 import { RouterPathEnum } from '@/types/RouterPathEnum'
-import { createRouter, createWebHistory } from 'vue-router/auto'
+import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({

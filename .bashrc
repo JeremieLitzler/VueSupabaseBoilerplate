@@ -2,7 +2,7 @@
 #
 # Then use these aliases:
 alias sb='source .bashrc'
-alias sp-init='supabase init'
+alias sp-init='supabase init --force'
 alias sp-login='supabase login'
 alias sp-link-env='source .env && echo "linking to $SUPABASE_PROJECT_ID ... using password=$SUPABASE_PROJECT_PASSWORD" && supabase link --project-ref $SUPABASE_PROJECT_ID'
 alias sp-gen-types='source .env && supabase gen types --lang=typescript --project-id "$SUPABASE_PROJECT_ID" --schema public > src/types/DatabaseTypes.ts'

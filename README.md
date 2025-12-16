@@ -101,3 +101,39 @@ npm run lint
 To use Semantic Release, you need to follow [this complete guide](https://gonzalohirsch.com/blog/semantic-release-and-branch-protection-rules/) to create your GitHub App installed on your account only to give it force-push rights when `semantic-release` workflow runs.
 
 Or you can simply use the `tag-release.sh` script in the repository root, for a simplier but manual step.
+
+## About Supabase
+
+- Install it with [Scoop](https://scoop.sh/#/apps?q=supabase)
+- Initialize your `.env`
+
+  ```plaintext
+  SUPABASE_PROJECT_ID=[set project id available on https://supabase.com/dashboard/project and by selecting the target project]
+  SUPABASE_PROJECT_PASSWORD=[the password you chose when creating the project]
+  VITE_SUPABASE_URL=https://[set project id].supabase.co
+  VITE_SUPABASE_KEY=[see https://supabase.com/dashboard/project/[your project id]/settings/api-keys > "Publishable key"]
+  VITE_TESTING_USER_EMAIL="[pick a working email, Yopmail works great => http://yopmail.com/]"
+  VITE_SUPABASE_PROJECT_SERVICE_ROLE=[see https://supabase.com/dashboard/project/[your project id]/settings/api-keys > "Secret keys"]
+  VITE_HCAPTCHA_SECRET=[see https://docs.hcaptcha.com/#integration-testing-test-keys]
+  VITE_HCAPTCHA_SITEKEY=[see https://docs.hcaptcha.com/#integration-testing-test-keys]
+  ```
+
+- Run `source .bashrc` to load the bash aliases
+- Run `sp-init` and select:
+
+  ```plaintext
+  Generate VS Code settings for Deno? [y/N] N
+  Generate IntelliJ Settings for Deno? [y/N] N
+  ```
+
+- Run `sp-login` and follow the instructions.
+  **⚠️ MAKE SURE THE DEFAULT BROWSER AND WINDOWS IS ALREADY LOGGED IN TO SUPABASE ⚠️**.
+
+- Run `sp-link-env`
+
+- Run `sp-db-rs` to reset and seed the database.
+- Run `npm run dev`
+- Navigate to Mail client (if [Yopmail](http://yopmail.com/) and load the inbox of the email you've set in the env variable `VITE_TESTING_USER_EMAIL`)
+- Open the email recieved fron Supabase and click "Confirm" link
+- Open the application and log in.
+- You're done! ✨
