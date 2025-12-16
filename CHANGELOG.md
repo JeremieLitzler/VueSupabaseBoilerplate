@@ -1,3 +1,13 @@
+## [2.6.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.2...v2.6.0) (2025-12-16)
+
+### Features
+
+* refresh integration with supabase ([603d9ad](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/603d9ad4fa9b98a5d00d3e65cbbeb482f3bc4909))
+
+### Others
+
+* explain supabase setup and init ([1c4c851](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/1c4c851a769de53172a56b77e74c35eadde424c7))
+
 ## [2.5.2](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.1...v2.5.2) (2025-12-16)
 
 ### Dependencies
