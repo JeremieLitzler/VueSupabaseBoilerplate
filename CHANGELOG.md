@@ -1,3 +1,11 @@
+## [2.6.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.6.0...v2.6.1) (2026-02-04)
+
+### Dependencies
+
+* **deps:** bump @netlify/functions from 5.1.1 to 5.1.2 ([219cf10](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/219cf101c91e05c68a1254346a772512431b6930))
+* **deps:** bump the npm_and_yarn group across 1 directory with 2 updates ([b692588](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/b6925889580e2bc367d5462936e335f4526f384d))
+* **deps:** bump vue from 3.5.25 to 3.5.26 ([872f5f1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/872f5f19fd69db5d05ed31132e65ff4c79efadfd))
+
 ## [2.6.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.2...v2.6.0) (2025-12-16)
 
 ### Features
