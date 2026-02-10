@@ -59,6 +59,6 @@
     "unplugin-vue-router": "^0.19.1",
     "vite": "^7.1.12",
     "vite-plugin-vue-devtools": "^8.0.5",
-    "vue-tsc": "^3.1.8"
+    "vue-tsc": "^3.2.4"
   }
 }
