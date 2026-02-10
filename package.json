@@ -24,7 +24,7 @@
     "@tanstack/vue-table": "^8.21.3",
     "@vee-validate/i18n": "^4.15.1",
     "@vee-validate/rules": "^4.15.1",
-    "@vueuse/core": "^14.1.0",
+    "@vueuse/core": "^14.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "pinia": "^3.0.4",
