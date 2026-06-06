@@ -1,3 +1,92 @@
+## [2.6.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.6.0...v2.6.1) (2026-02-04)
+
+### Dependencies
+
+* **deps:** bump @netlify/functions from 5.1.1 to 5.1.2 ([219cf10](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/219cf101c91e05c68a1254346a772512431b6930))
+* **deps:** bump the npm_and_yarn group across 1 directory with 2 updates ([b692588](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/b6925889580e2bc367d5462936e335f4526f384d))
+* **deps:** bump vue from 3.5.25 to 3.5.26 ([872f5f1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/872f5f19fd69db5d05ed31132e65ff4c79efadfd))
+
+## [2.6.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.2...v2.6.0) (2025-12-16)
+
+### Features
+
+* refresh integration with supabase ([603d9ad](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/603d9ad4fa9b98a5d00d3e65cbbeb482f3bc4909))
+
+### Others
+
+* explain supabase setup and init ([1c4c851](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/1c4c851a769de53172a56b77e74c35eadde424c7))
+
+## [2.5.2](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.1...v2.5.2) (2025-12-16)
+
+### Dependencies
+
+* **deps:** bump @netlify/functions from 2.8.2 to 5.0.1 ([993e80b](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/993e80ba3b2eda8384ff69c8495327b7d8826dad))
+* **deps:** bump the npm_and_yarn group across 1 directory with 3 updates ([c7a6ef3](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c7a6ef38df382049ea40004f2c03e694c7a29f7c))
+
+## [2.5.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.5.0...v2.5.1) (2025-05-27)
+
+### Bug Fixes
+
+* resolve issue [#125](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/125) ([2e2535a](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/2e2535a5c8ba5f68c28d112921c34a6cfa03c6dd))
+
+## [2.5.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.4.0...v2.5.0) (2025-05-27)
+
+### Features
+
+* apply dark mode to modals ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([7f8e279](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/7f8e2799b0a02c5f4b9f85b5d998e99397ba27df))
+* complete dark mode ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([163fcc5](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/163fcc582b9559f5ad12dc6caafc676c8c676c79))
+* reactivate dark mode toggle ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([b1708aa](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/b1708aacd540734c31bb92afd865e3849dd6dc86))
+
+### Bug Fixes
+
+* resolve issue [#123](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/123) ([939d6b5](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/939d6b539933522771d294aa5e8b3d59d11546de))
+
+### Others
+
+* remove Sheet component and related ([#112](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/issues/112)) ([7ee8b63](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/7ee8b63ef24ee6e25ada759c3dc3a4b0051bc507))
+
+### Dependencies
+
+* **deps:** bump vue-router from 4.5.0 to 4.5.1 ([678a8eb](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/678a8eb4c3d7cbd3c55f6780553f1d4366390d66))
+
+## [2.4.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.2...v2.4.0) (2025-04-10)
+
+### Features
+
+* restyle entities page ([06595b7](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/06595b7ab2b0d0babfab77046fc0af5eeb1c6cda))
+* restyle entities page ([70a6cb9](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/70a6cb9a7f48c4312545782af8dd8614eaace2dc))
+* restyle entity-slug page ([fe0d782](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/fe0d782ccec3f4c20113463a3639033bcade23bb))
+* restyle entity-slug page ([e58e759](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/e58e7598db62af0e3d9685dab0e7516e8d614a40))
+* restyle forms ([e179f7e](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/e179f7e4ceb83c5f33fa3f5c7014a879069522f3))
+* restyle login page, components and layout ([8333f2d](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/8333f2df8c405168145a0ffb65367361680f0428))
+* restyle page container in AuthLayout ([94d3503](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/94d35037273c6c9526253450af79a840501deb4a))
+* restyle page container in AuthLayout ([9e3bdbd](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/9e3bdbd22a5ef2fec91811b09702ff764fe24fe2))
+* restyle page login to fix buttons ([c381c7d](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c381c7d4641135f7d4d335a2a44079869caca543))
+* restyle page settings and profiles/[username] ([139f491](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/139f49114b2583ae283995e3536c63221eee0dcb))
+* restyle page subentity ([ec8beae](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/ec8beaeea077a78ab56031dd34c8be36f49b2b63))
+* restyle sidebar component ([020e49d](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/020e49de84e539c46f79857b01f28e7baa42d7af))
+* restyle sidebarlinks component ([010bd5e](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/010bd5e8ebe446e1a9c3cfa238f4d2715482e22c))
+* restyle style guide page with new AppHeading components ([fe62677](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/fe626779aa3dade43a32770a91f31dc5b240b13e))
+* restyle topbar component ([35d265b](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/35d265bd35b9bba6fa7f4127996525fb34900782))
+
+### Bug Fixes
+
+* editing a subentity does refresh entities and its subentities list ([c04b963](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c04b96341620c87d3a1cd0e85d0292968aced52d))
+* editing a subentity does refresh entities and its subentities list ([d7136fb](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/d7136fb408f62532acf29abfc1f03408b71a548e))
+
+## [2.3.2](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.1...v2.3.2) (2025-04-08)
+
+### Bug Fixes
+
+* review and fix a few issue with tailwind upgrade ([f60fb0b](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/f60fb0bac2db609fe3607ddf6f43dcd0aed6a5f0))
+
+## [2.3.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.0...v2.3.1) (2025-04-08)
+
+### Dependencies
+
+* **deps:** bump uuid from 11.0.5 to 11.1.0 ([c521747](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/c52174797f9ec8448d11350677383af38e104f5a))
+* **deps:** bump uuid from 11.0.5 to 11.1.0 ([4fe6c45](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/4fe6c4555e473cf7c592e64316731c2cbcccda02))
+
 ## [2.3.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.2.0...v2.3.0) (2025-04-08)
 
 ### Features
