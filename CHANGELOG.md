@@ -1,3 +1,9 @@
+## [2.4.1](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.4.0...v2.4.1) (2026-06-06)
+
+### Bug Fixes
+
+* remove baseUrl from tsconfig since it is depreciated ([6c5e967](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/commit/6c5e9674b9c8f04dc45fd5861a728384ae8a4753))
+
 ## [2.4.0](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/compare/v2.3.0...v2.4.0) (2026-06-06)
 
 ### Features
