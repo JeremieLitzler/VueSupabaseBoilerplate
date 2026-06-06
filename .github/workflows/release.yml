@@ -3,7 +3,9 @@ name: Automatic Release
 run-name: ${{ github.actor }} is automatically releasing 🚀
 
 on:
-  # Run automatically on main pushes
+  # Triggers on every push to main, which happens when a develop→main PR is
+  # merged. The job runs semantic-release and then syncs the resulting release
+  # commit back to develop (see the "Sync release commit back to develop" step).
   push:
     branches:
       - main
@@ -21,26 +23,96 @@ jobs:
         with:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_APP_KEY }}
-      # Check out the code to be able to deploy
+
+      # Check out the code to be able to deploy.
+      # fetch-depth: 0 gives semantic-release the full commit history it needs
+      # to walk back to the last tag and determine the next version number.
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
+
       # Setting up Node LTS
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
+
       # Make sure all the dependencies are ok and installed
       - name: 'Installing dependencies'
         run: npm ci
+
       - name: 'Verifying the signatures'
         run: npm audit signatures
-      # Install semantic release
-      - name: Semantic Release
+
+      # semantic-release analyses commits since the last tag, bumps the version,
+      # writes CHANGELOG.md, and pushes a release commit + Git tag directly to
+      # main via @semantic-release/git.
+      #
+      # Problem: that release commit is NOT on develop. The next develop→main PR
+      # therefore cannot be rebased cleanly — git tries to replay develop's new
+      # commits on top of the release commit and hits a conflict on CHANGELOG.md
+      # (and any other file @semantic-release/git wrote). See the sync step below
+      # for the fix.
+      - name: 'Semantic Release'
+        id: semantic
         uses: cycjimmy/semantic-release-action@v4
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+
+      # WHY THIS STEP EXISTS
+      # --------------------
+      # After semantic-release commits to main, develop diverges from main by
+      # exactly the release commits (@semantic-release/git writes CHANGELOG.md
+      # and bumps the version). Without a sync, every subsequent develop→main PR
+      # fails to rebase because both branches have modified the same version files
+      # from a different common ancestor.
+      #
+      # HOW IT WORKS
+      # ------------
+      # We merge main into develop so the release commit becomes part of
+      # develop's history. The next PR from develop to main then only contains
+      # commits added after this sync, with no version-file conflicts.
+      #
+      # Fast-forward vs merge commit
+      # - After a "Merge commit" PR strategy the merge is a fast-forward (main
+      #   is a direct descendant of develop), so no extra commit is created.
+      # - After a "Rebase and merge" PR strategy the PR commits are replayed
+      #   with new hashes, so fast-forward is impossible and git creates a real
+      #   merge commit instead. Either outcome leaves develop fully in sync.
+      #
+      # GUARDS
+      # ------
+      # - Runs only when semantic-release actually published a release
+      #   (new_release_published == 'true'). Skipped when there are no
+      #   releasable commits since the last tag (no-op run).
+      # - The merge commit message contains [skip ci] so this push does not
+      #   retrigger other CI workflows that listen on develop (e.g. lint/tests).
+      - name: 'Sync release commit back to develop'
+        if: steps.semantic.outputs.new_release_published == 'true'
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Embed the GitHub App token in the remote URL so this push is
+          # accepted even when branch-protection rules block the default
+          # GITHUB_TOKEN identity.
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch develop and create a local tracking branch for it.
+          # (The Checkout step only fetched main.)
+          git fetch origin develop
+          git checkout -B develop origin/develop
+
+          # Merge main into develop. git will fast-forward when possible;
+          # otherwise it creates a merge commit. The -m message is used only
+          # when a real merge commit is needed (fast-forward produces no commit).
+          git merge origin/main -m "chore(release): sync changelog from main [skip ci]"
+
+          git push origin develop
