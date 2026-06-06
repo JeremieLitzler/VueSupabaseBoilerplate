@@ -13,9 +13,6 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  build: {
-    cssMinify: 'lightningcss', // New CSS minifier
-  },
   plugins: [
     VueRouter(),
     vue({
