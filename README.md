@@ -96,11 +96,16 @@ nb
 npm run lint
 ```
 
-## Semantic Release setup
+## Releases
 
-To use Semantic Release, you need to follow [this complete guide](https://gonzalohirsch.com/blog/semantic-release-and-branch-protection-rules/) to create your GitHub App installed on your account only to give it force-push rights when `semantic-release` workflow runs.
+Releases follow [ADR-001](docs/decisions/adr-001-release-sh-pinned-script-release-workflow.md). `main` is the only long-lived branch and changes land by pull request.
 
-Or you can simply use the `tag-release.sh` script in the repository root, for a simplier but manual step.
+- A push to `main` runs a dry-run preview of the next release (version and notes) in the `release` workflow run summary.
+- To cut a release, push a `release/<date>` branch off the tip of `main`: `git switch -c release/2026-10-23 && git push -u origin release/2026-10-23`. The workflow tags the commit, creates the GitHub release and deletes the `release/*` branch. The version comes from the conventional commits.
+- Once a release is cut, the workflow calls the `NETLIFY_BUILD_HOOK` repository Actions secret to deploy production. Netlify skips production builds that the hook did not start (see `netlify.toml`); deploy previews still build.
+- The **Actions > release** workflow can also be run manually: `preview`, `publish` (from `main` or `release/*`) or `deploy-site` (redeploys without a release).
+- `release.sh` is downloaded at the commit pinned in `RELEASE_SCRIPT_REF` in `.github/workflows/release.yml`; the comment above it explains how to move the pin.
+- The history lives on the [GitHub releases](https://github.com/JeremieLitzler/VueSupabaseBoilerplate/releases) page.
 
 ## About Supabase
 
