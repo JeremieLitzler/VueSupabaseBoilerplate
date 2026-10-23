@@ -1,118 +1,199 @@
-# release.yml
-name: Automatic Release
-run-name: ${{ github.actor }} is automatically releasing 🚀
+name: release
 
+# Preview: a push to main, or a manual dispatch left on "preview", dry-runs
+# the release and writes the pending version and notes to the job summary.
+# Publish: a push to release/*, or a manual dispatch with "publish", cuts the
+# tag and the GitHub release. Publish is refused from any ref but main or
+# release/*. The repository has no test suite, so the guard is its only gate.
+# The version is left to the commits: no level is forced.
+# Deploy site: after a release is cut, and on a manual dispatch with
+# "deploy-site" (from main only), the Netlify build hook redeploys the
+# website. It is a job of its own, so a Netlify outage never turns a published
+# release red.
 on:
-  # Triggers on every push to main, which happens when a develop→main PR is
-  # merged. The job runs semantic-release and then syncs the resulting release
-  # commit back to develop (see the "Sync release commit back to develop" step).
   push:
-    branches:
-      - main
+    branches: [main, 'release/**']
+  workflow_dispatch:
+    inputs:
+      action:
+        description: preview dry-runs the release; publish cuts it (main or release/* only); deploy-site redeploys the website without a release
+        type: choice
+        options: [preview, publish, deploy-site]
+        default: preview
+
+# The release.sh this workflow runs is the one at this commit of
+# JeremieLitzler/semantic-release-script, never the copy on the commit being
+# released, so a bug in a commit cannot break its own release.
+#
+# To move the pin:
+#   1. Pick the commit of the script repository's main to run, or the commit of
+#      one of its version tags:
+#        git rev-parse 'vX.Y.Z^{commit}'
+#   2. Change RELEASE_SCRIPT_REF below to that SHA, and the comment above it
+#      to name that commit or tag.
+#   3. Merge that change: the next push to main previews the pending release
+#      with the new script before anything is published.
+# Pin the SHA, not the tag name: a tag can be moved, a SHA cannot.
+env:
+  # Tag v1.0.0 (commit 3a803a8): the first major
+  RELEASE_SCRIPT_REF: 3a803a8290aeae72e404cab7b2d655d0e2e81ea4
+
+permissions:
+  contents: read
 
 jobs:
-  release:
-    name: Release
+  preview:
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && inputs.action == 'preview')
     runs-on: ubuntu-latest
-    environment:
-      name: CI # This is the name of your env created under https://github.com/{user}/{repo_name}/settings/environments/
+    concurrency:
+      group: release-preview
+      cancel-in-progress: true
     steps:
-      - name: 'Generate token'
-        id: generate_token
-        uses: tibdex/github-app-token@v1
+      - uses: actions/checkout@v4
         with:
-          app_id: ${{ secrets.GH_APP_ID }}
-          private_key: ${{ secrets.GH_APP_KEY }}
-
-      # Check out the code to be able to deploy.
-      # fetch-depth: 0 gives semantic-release the full commit history it needs
-      # to walk back to the last tag and determine the next version number.
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.base.ref }}
 
-      # Setting up Node LTS
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
-
-      # Make sure all the dependencies are ok and installed
-      - name: 'Installing dependencies'
-        run: npm ci
-
-      - name: 'Verifying the signatures'
-        run: npm audit signatures
-
-      # semantic-release analyses commits since the last tag, bumps the version,
-      # writes CHANGELOG.md, and pushes a release commit + Git tag directly to
-      # main via @semantic-release/git.
-      #
-      # Problem: that release commit is NOT on develop. The next develop→main PR
-      # therefore cannot be rebased cleanly — git tries to replay develop's new
-      # commits on top of the release commit and hits a conflict on CHANGELOG.md
-      # (and any other file @semantic-release/git wrote). See the sync step below
-      # for the fix.
-      - name: 'Semantic Release'
-        id: semantic
-        uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-
-      # WHY THIS STEP EXISTS
-      # --------------------
-      # After semantic-release commits to main, develop diverges from main by
-      # exactly the release commits (@semantic-release/git writes CHANGELOG.md
-      # and bumps the version). Without a sync, every subsequent develop→main PR
-      # fails to rebase because both branches have modified the same version files
-      # from a different common ancestor.
-      #
-      # HOW IT WORKS
-      # ------------
-      # We merge main into develop so the release commit becomes part of
-      # develop's history. The next PR from develop to main then only contains
-      # commits added after this sync, with no version-file conflicts.
-      #
-      # Fast-forward vs merge commit
-      # - After a "Merge commit" PR strategy the merge is a fast-forward (main
-      #   is a direct descendant of develop), so no extra commit is created.
-      # - After a "Rebase and merge" PR strategy the PR commits are replayed
-      #   with new hashes, so fast-forward is impossible and git creates a real
-      #   merge commit instead. Either outcome leaves develop fully in sync.
-      #
-      # GUARDS
-      # ------
-      # - Runs only when semantic-release actually published a release
-      #   (new_release_published == 'true'). Skipped when there are no
-      #   releasable commits since the last tag (no-op run).
-      # - The merge commit message contains [skip ci] so this push does not
-      #   retrigger other CI workflows that listen on develop (e.g. lint/tests).
-      - name: 'Sync release commit back to develop'
-        if: steps.semantic.outputs.new_release_published == 'true'
-        env:
-          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
-          REPO: ${{ github.repository }}
+      - name: Fetch the pinned release.sh
         run: |
-          # Embed the GitHub App token in the remote URL so this push is
-          # accepted even when branch-protection rules block the default
-          # GITHUB_TOKEN identity.
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          curl -fsSL "https://raw.githubusercontent.com/JeremieLitzler/semantic-release-script/${RELEASE_SCRIPT_REF}/scripts/release/release.sh" \
+            -o "$RUNNER_TEMP/release.sh"
+          chmod +x "$RUNNER_TEMP/release.sh"
 
+      - name: Dry-run the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          "$RUNNER_TEMP/release.sh" --dry-run \
+            --summary "$RUNNER_TEMP/release.env" --notes "$RUNNER_TEMP/notes.md"
+          code=$?
+          set -e
+          {
+            echo "## Release preview"
+            echo
+            if [[ $code -eq 0 ]]; then
+              echo '```'
+              cat "$RUNNER_TEMP/release.env"
+              echo '```'
+              echo
+              cat "$RUNNER_TEMP/notes.md"
+            elif [[ $code -eq 2 ]]; then
+              echo "Nothing to release: no commit since the last version tag."
+            else
+              echo "The preview stopped with exit code $code. See the step log."
+            fi
+          } >>"$GITHUB_STEP_SUMMARY"
+          # 2 is a normal day on a trunk that has only seen merges.
+          [[ $code -eq 0 || $code -eq 2 ]]
+
+  guard:
+    if: >-
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.action == 'publish')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse a ref that cannot publish
+        run: |
+          if [[ "$GITHUB_REF" != refs/heads/main && "$GITHUB_REF" != refs/heads/release/* ]]; then
+            echo "::error::publish runs from main or a release/* branch, not $GITHUB_REF"
+            exit 1
+          fi
+
+  publish:
+    needs: guard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      released: ${{ steps.release.outputs.released }}
+    # A queued publish is never replaced by a later one.
+    concurrency:
+      group: release-publish
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      # The commit that triggered the run, not whatever the ref moved to.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Refuse a release/* ref that main does not contain
+        if: startsWith(github.ref, 'refs/heads/release/')
+        run: |
+          git fetch --no-tags origin main
+          if ! git merge-base --is-ancestor HEAD FETCH_HEAD; then
+            echo "::error::$GITHUB_REF_NAME is not contained in main; merge it or cut a new release branch from main"
+            exit 1
+          fi
+
+      - name: Fetch the pinned release.sh
+        run: |
+          curl -fsSL "https://raw.githubusercontent.com/JeremieLitzler/semantic-release-script/${RELEASE_SCRIPT_REF}/scripts/release/release.sh" \
+            -o "$RUNNER_TEMP/release.sh"
+          chmod +x "$RUNNER_TEMP/release.sh"
+
+      # An annotated tag needs a committer, and a runner has none. The tag is
+      # the workflow's, not a person's.
+      - name: Set the git identity of the tag
+        run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Fetch develop and create a local tracking branch for it.
-          # (The Checkout step only fetched main.)
-          git fetch origin develop
-          git checkout -B develop origin/develop
+      - name: Cut the release
+        id: release
+        run: |
+          set +e
+          "$RUNNER_TEMP/release.sh" --yes --summary "$RUNNER_TEMP/release.env"
+          code=$?
+          set -e
+          if [[ $code -eq 2 ]]; then
+            echo "Nothing to release: no commit since the last version tag." >>"$GITHUB_STEP_SUMMARY"
+            echo "released=no" >>"$GITHUB_OUTPUT"
+            exit 0
+          fi
+          [[ $code -eq 0 ]] || exit "$code"
+          # Only the documented keys, one line each, reach the outputs.
+          grep -E '^(tag|version|bump|baseline|released)=[A-Za-z0-9.+-]*$' "$RUNNER_TEMP/release.env" >>"$GITHUB_OUTPUT"
 
-          # Merge main into develop. git will fast-forward when possible;
-          # otherwise it creates a merge commit. The -m message is used only
-          # when a real merge commit is needed (fast-forward produces no commit).
-          git merge origin/main -m "chore(release): sync changelog from main [skip ci]"
+      - name: Report
+        if: steps.release.outputs.released == 'yes'
+        env:
+          TAG: ${{ steps.release.outputs.tag }}
+        run: echo "Published $TAG" >>"$GITHUB_STEP_SUMMARY"
 
-          git push origin develop
+      - name: Delete the release branch
+        if: >-
+          github.event_name == 'push' &&
+          startsWith(github.ref, 'refs/heads/release/') &&
+          steps.release.outputs.released == 'yes'
+        run: git push origin --delete "$GITHUB_REF_NAME"
+
+  deploy-site:
+    needs: publish
+    # always(): a deploy-site dispatch skips guard and publish, and a skipped
+    # need would skip this job with them. A release that was not cut (nothing
+    # to release) or that failed deploys nothing.
+    if: >-
+      always() && (
+        (needs.publish.result == 'success' && needs.publish.outputs.released == 'yes') ||
+        (github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-site' && github.ref == 'refs/heads/main')
+      )
+    runs-on: ubuntu-latest
+    # NETLIFY_BUILD_HOOK is a repository Actions secret, not an environment one.
+    environment: CI
+    permissions: {}
+    steps:
+      - name: Call the Netlify build hook
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [[ -z "$NETLIFY_BUILD_HOOK" ]]; then
+            echo "::error::the NETLIFY_BUILD_HOOK secret is not set"
+            exit 1
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK"
+          echo "Netlify build triggered" >>"$GITHUB_STEP_SUMMARY"

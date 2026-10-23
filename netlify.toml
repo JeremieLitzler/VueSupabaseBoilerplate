@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+  # Production builds run only from the release build hook (ADR-001): exit 0
+  # skips a production build not started by the hook, while deploy previews and
+  # branch deploys still build.
+  # The ignore command: https://docs.netlify.com/build/configure-builds/ignore-builds
+  # CONTEXT is production, deploy-preview, branch-deploy or dev; INCOMING_HOOK_TITLE
+  # is set only on a build-hook build:
+  # https://docs.netlify.com/build/configure-builds/environment-variables
+  ignore = "test \"$CONTEXT\" = production && test -z \"$INCOMING_HOOK_TITLE\""
